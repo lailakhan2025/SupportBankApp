@@ -6,13 +6,13 @@ namespace SupportBank
         public static void Main(string[] args)
         {
             List<Transaction> transactions = new List<Transaction>();
-            var readfile = new ReadFile();
-            var printoutput = new PrintOutput();
+            List<User> users = new List<User>();
 
             string filepath = "Transactions2014.csv";
-            readfile.FetchFile(transactions, filepath);
+            ReadFile.FetchFile(transactions, filepath);
+            PrintOutput.PrintTransactions(transactions);
+
             
-            printoutput.PrintTransactions(transactions);
         }
     }
 }
