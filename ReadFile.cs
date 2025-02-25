@@ -3,7 +3,7 @@ namespace SupportBank
 {
     class ReadFile
     {
-        public void FetchFile(List<Transaction> transactions, string filepath)
+        public static void FetchFile(List<Transaction> transactions, string filepath)
         {
             try
             {

@@ -2,7 +2,7 @@ namespace SupportBank
 {
     class PrintOutput
     {
-        public void PrintTransactions(List<Transaction> transactions)
+        public static void PrintTransactions(List<Transaction> transactions)
         {
             foreach (Transaction transactionitem in transactions)
             {
