@@ -6,9 +6,9 @@ namespace SupportBank
         public string From { get; set; }
         public string To { get; set; }
         public string Narrative { get; set; }
-        public float Amount { get; set; }
+        public int Amount { get; set; }
 
-        public Transaction(DateOnly date, string from, string to, string narrative, float amount)
+        public Transaction(DateOnly date, string from, string to, string narrative, int amount)
         {
             Date = date;
             From = from;

@@ -5,14 +5,11 @@ namespace SupportBank
     {
         public static void Main(string[] args)
         {
-            List<Transaction> transactions = new List<Transaction>();
-            List<User> users = new List<User>();
+            var accounts = new Dictionary<string, Account>();
 
             string filepath = "Transactions2014.csv";
-            ReadFile.FetchFile(transactions, filepath);
-            PrintOutput.PrintTransactions(transactions);
-
-            
+            FetchFile.ReadandParseFile(accounts, filepath);
+            PrintOutput.PrintAccountBalance(accounts);
         }
     }
 }
