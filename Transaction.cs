@@ -2,11 +2,11 @@ namespace SupportBank
 {
     class Transaction
     {
-        public DateOnly Date { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
-        public string Narrative { get; set; }
-        public int Amount { get; set; }
+        public DateOnly Date {get;}
+        public string From {get;}
+        public string To { get;}
+        public string Narrative {get;}
+        public int Amount {get;}
 
         public Transaction(DateOnly date, string from, string to, string narrative, int amount)
         {

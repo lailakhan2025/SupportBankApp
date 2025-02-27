@@ -1,11 +1,15 @@
+
 namespace SupportBank
 {
     class FetchFile
     {
-        public static void ReadandParseFile(Dictionary<string, Account> accounts, string filepath)
+        public static void ReadFile(string filepath, HandleTransactions handletransactions)
         {
             try
-            {
+            {   
+                if(!File.Exists(filepath))
+                throw new FileLoadException("Error: Transaction file not found");
+
                 string[] lines = File.ReadAllLines(filepath);
 
                 foreach (string line in lines.Skip(1))
@@ -15,24 +19,21 @@ namespace SupportBank
                     string[] datapoint = line.Split(',');
 
                     DateOnly date = DateOnly.Parse(datapoint[0]);
-                    string fromUser = datapoint[1];
-                    string toUser = datapoint[2];
+                    string from = datapoint[1];
+                    string to = datapoint[2];
                     string narrative = datapoint[3];
-                    int amount = Convert.ToInt32(float.Parse(datapoint[4]) * 100);
+                    int amount = Convert.ToInt32(float.Parse(datapoint[4]));
 
-                    Transaction transaction = new Transaction(date, fromUser, toUser, narrative, amount);
-                    if (!accounts.ContainsKey(fromUser))
-                    { accounts[fromUser] = new Account(fromUser, 0, 0); }
-                    accounts[fromUser].AddReceivable(transaction);
-
-                    if (!accounts.ContainsKey(toUser))
-                    { accounts[toUser] = new Account(toUser, 0, 0); }
-                    accounts[toUser].AddPayable(transaction);
+                    handletransactions.AddTransactions(date, from, to, narrative, amount);
                 }
             }
-            catch
+            catch(FileNotFoundException error)
             {
-                Console.WriteLine("Error reading file");
+                Console.WriteLine($"Error: {error.Message}");
+            }
+            catch(IOException error)
+            {
+                Console.WriteLine($"Error: {error.Message}");
             }
         }
 

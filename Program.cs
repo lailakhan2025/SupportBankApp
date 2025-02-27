@@ -1,15 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
 namespace SupportBank
 {
     class SupportBank
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            var accounts = new Dictionary<string, Account>();
+            HandleTransactions handletransactions = new HandleTransactions();
 
             string filepath = "Transactions2014.csv";
-            FetchFile.ReadandParseFile(accounts, filepath);
-            PrintOutput.PrintAccountBalance(accounts);
+            FetchFile.ReadFile(filepath,handletransactions);
+
+            PrintOutput.PrintAllAccountBalance(handletransactions);
         }
     }
 }
