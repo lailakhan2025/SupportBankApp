@@ -1,2 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+namespace SupportBank
+{
+    class SupportBank
+    {
+        public static void Main(string[] args)
+        {
+            List<Transaction> transactions = new List<Transaction>();
+
+            string filepath = "Transactions2014.csv";
+            ReadFile.FetchFile(transactions, filepath);
+            PrintOutput.PrintTransactions(transactions);
+        }
+    }
+}
+
