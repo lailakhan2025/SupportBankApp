@@ -2,21 +2,21 @@
 namespace SupportBank
 {
     class SupportBank
-    {    
+    {
         public static void Main()
         {
             AccountHandler accounthandler = new AccountHandler();
             List<Transaction> transactions = new List<Transaction>();
 
             string filepath = "Transactions2014.csv";
-            FileReader.ReadFile(filepath,transactions);
-            accounthandler.LoadTransactions(transactions);
+            FileReader.ReadFile(filepath, transactions);
+            accounthandler.LoadAccountTransactions(transactions);
 
             while (true)
             {
                 Console.WriteLine("Enter the index number of the option you would like to choose:\n");
                 Console.WriteLine("1. List all account balance\n");
-                Console.WriteLine("2. Select an account\n");
+                Console.WriteLine("2. Select an account to list transactions\n");
                 Console.WriteLine("3. Exit");
 
                 string userinput = Console.ReadLine();

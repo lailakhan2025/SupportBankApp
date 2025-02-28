@@ -6,7 +6,7 @@ namespace SupportBank
     class AccountHandler
     {
         private Dictionary<string, Account> accounts = new Dictionary<string, Account>();
-        public void LoadTransactions(List<Transaction> transactions)
+        public void LoadAccountTransactions(List<Transaction> transactions)
         {
             foreach (var transaction in transactions)
             {
