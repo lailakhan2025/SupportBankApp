@@ -29,16 +29,14 @@ namespace SupportBank
                     }
                     if (!DateOnly.TryParse(datapoint[0], out DateOnly date))
                     {
-                        Logger.Error($"Invalid date format: {datapoint[0]} in line {linenumber})");
-                        throw new FormatException($"Invalid date format: {datapoint[0]} in line {linenumber})");
+                        Logger.Warn($"Invalid date format: {datapoint[0]} in line {linenumber})");
                     }
                     string from = datapoint[1];
                     string to = datapoint[2];
                     string narrative = datapoint[3];
                     if (!float.TryParse(datapoint[4], out float parsedamount))
                     {
-                        Logger.Error($"Invalid amount:{datapoint[4]} in line {linenumber})");
-                        throw new FormatException($"Invalid amount:{datapoint[4]} in line {linenumber})");
+                        Logger.Warn($"Invalid amount:{datapoint[4]} in line {linenumber})");
                     }
                     int amount = Convert.ToInt32(parsedamount);
                     transactions.Add(new Transaction(date, from, to, narrative, amount));
@@ -52,7 +50,7 @@ namespace SupportBank
             }
             catch (IOException error)
             {
-                Logger.Fatal($"Error Reading file: {error}");
+                Logger.Error($"Error Reading file: {error}");
                 Console.WriteLine($"Error:{error.Message}");
             }
         }
